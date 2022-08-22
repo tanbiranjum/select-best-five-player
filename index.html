@@ -5,21 +5,20 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<!-- CSS only -->
 	<script src="https://cdn.tailwindcss.com"></script>
 	<link rel="stylesheet" href="./src/style.css">
 	<title>Select Five Player</title>
 </head>
 
 <body class="bg-gray-900">
-	<header class="h-96 bg-slate-900 flex justify-between items-center">
-		<div class="relative">
-			<img class="absolute z-0" src="./assets/path56.png" alt="">
-			<img class="z-10" src="./assets/image 27.png" alt="">
+	<header class="h-96 bg-black flex justify-between items-center">
+		<div class="self-end">
+			<img class="translate-y-3/4" src="./assets/path56.png" alt="">
+			<img class="relative z-100" src="./assets/image 27.png" alt="">
 		</div>
 		<div class="text-center w-2/4">
 			<div class="relative">
-				<h1 class="text-rose-600 text-5xl">Select Your Best Five</h1>
+				<h1 class="text-rose-500 text-5xl font-sans" style="font-family: fantasy;">Select Your Best Five</h1>
 				<img class="absolute right-0" src="./assets/Line Marker.png" alt="">
 			</div>
 			<p class="text-white pt-10">Football is a family of team sports that involve, to varying degrees, kicking a
@@ -32,7 +31,7 @@
 	<main>
 		<!-- CARD SECTION START -->
 		<section class="pt-8">
-			<div class="w-5/6 mx-auto justify-between flex">
+			<div class="w-5/6 mx-auto justify-between flex items-start">
 				<div class="w-3/4 justify-between flex flex-wrap cards"></div>
 				<div class="flex-grow">
 					<div class="w-11/12 ml-auto mt-4">
@@ -74,8 +73,10 @@
 		</section>
 		<!-- CARD SECTION END -->
 	</main>
+	<footer class="border-t py-4 mt-16 border-slate-600">
+		<p class="text-center text-gray-200">Copyright @ 2022 All Rights Reserved.</p>
+	</footer>
 	<script src="src/main.js"></script>
 </body>
 </body>
-
 </html>

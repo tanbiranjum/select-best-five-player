@@ -83,11 +83,6 @@ function selectPlayer(event, index) {
   if (selectedPlayerList.length < 5) {
     players[index].selected = true
     selectedPlayerList.push(players[index].name)
-    event.target.style.backgroundColor = 'grey'
-    // if (event.target.classList.contains('bg-sky-600')) {
-    //   event.target.classList.remove('bg-sky-600')
-    //   event.target.classList.add('bg-slate-300')
-    // }
     console.log(event.target.classList)
     event.target.classList.remove('bg-sky-600')
     event.target.classList.add('bg-slate-300')
@@ -118,9 +113,11 @@ function renderHTMLCard() {
 						<div class="pt-2 flex flex-col items-center">
 							<h2 class="text-center text-2xl font-bold">${players[i].name}</h2>
 							<p class="text-center">36 Goals . 120 Assist</p>
-							<button ${
-                players[i].selected ? 'disabled' : ''
-              } type="button" class="w-4/5 bg-sky-600 py-1 mt-4" onClick="selectPlayer(event, ${i})">SELECT</button>
+							<button ${players[i].selected ? 'disabled' : ''} type="button" ${
+      players[i].selected
+        ? "class='w-4/5 bg-slate-300 py-1 mt-4'"
+        : "class='w-4/5 bg-sky-600 py-1 mt-4'"
+    } onClick="selectPlayer(event, ${i})">SELECT</button>
 						</div>
 					</div>
           `
