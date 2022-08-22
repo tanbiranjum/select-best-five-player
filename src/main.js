@@ -1,26 +1,38 @@
 let players = [
   {
     name: 'Lionel Messi',
+    image: 'Rectangle 144 (3).png',
+    stats: '36 Goals . 120 Assist',
     selected: false,
   },
   {
-    name: 'Neymar',
+    name: 'Neymar Jr.',
+    image: 'Rectangle 144 (1).png',
+    stats: '36 Goals . 120 Assist',
     selected: false,
   },
   {
-    name: 'Robert Lewandowski',
+    name: 'Kylian Mbappé',
+    image: 'Rectangle 144.png',
+    stats: '36 Goals . 120 Assist',
     selected: false,
   },
   {
-    name: 'Christiano Ronaldo',
+    name: 'Sergio Ramos',
+    image: 'Rectangle 144 (2).png',
+    stats: '36 Goals . 120 Assist',
     selected: false,
   },
   {
-    name: 'Luis Suarez',
+    name: 'Renato Sanches',
+    image: 'Rectangle 144 (4).png',
+    stats: '36 Goals . 120 Assist',
     selected: false,
   },
   {
-    name: 'Ansu Fati',
+    name: 'Vítor Machado',
+    image: 'Rectangle 144 (6).png',
+    stats: '36 Goals . 120 Assist',
     selected: false,
   },
 ]
@@ -71,6 +83,14 @@ function selectPlayer(event, index) {
   if (selectedPlayerList.length < 5) {
     players[index].selected = true
     selectedPlayerList.push(players[index].name)
+    event.target.style.backgroundColor = 'grey'
+    // if (event.target.classList.contains('bg-sky-600')) {
+    //   event.target.classList.remove('bg-sky-600')
+    //   event.target.classList.add('bg-slate-300')
+    // }
+    console.log(event.target.classList)
+    event.target.classList.remove('bg-sky-600')
+    event.target.classList.add('bg-slate-300')
     renderPlayerListHTML()
     renderHTMLCard()
     return
@@ -81,7 +101,9 @@ function selectPlayer(event, index) {
 function renderPlayerListHTML() {
   playerList.innerHTML = ''
   for (let i = 0; i < selectedPlayerList.length; i++) {
-    playerList.innerHTML += `<li>${i + 1}. ${selectedPlayerList[i]}</li>`
+    playerList.innerHTML += `<li class="py-2 text-gray-300">${i + 1}. ${
+      selectedPlayerList[i]
+    }</li>`
   }
 }
 
@@ -91,7 +113,7 @@ function renderHTMLCard() {
     cards.innerHTML += `
     <div class="bg-black pb-4 text-white border border-slate-300 mt-4">
 						<div>
-							<img src="./assets/Rectangle 144 (1).png" alt="">
+							<img src="./assets/${players[i].image}" alt="">
 						</div>
 						<div class="pt-2 flex flex-col items-center">
 							<h2 class="text-center text-2xl font-bold">${players[i].name}</h2>
