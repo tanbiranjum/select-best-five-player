@@ -19,17 +19,30 @@ let players = [
     name: "Luis Suarez",
     selected: false,
   },
+  {
+    name: "Ansu Fati",
+    selected: false,
+  },
 ];
 
 const selectedPlayerList = [];
 
+let totalPlayerCost = 0;
+let managerCost = 0;
+let coachCost = 0;
+let totalCost = 0;
+
 const cards = document.getElementsByClassName("cards")[0];
 
 function selectPlayer(event, index) {
-  players[index].selected = true;
-  selectedPlayerList.push(players[index].name);
-  console.log(selectedPlayerList);
-  renderHTMLCard();
+  if (selectedPlayerList.length < 5) {
+    players[index].selected = true;
+    selectedPlayerList.push(players[index].name);
+    console.log(selectedPlayerList);
+    renderHTMLCard();
+    return;
+  }
+  alert("Oops! You can't select more than five players");
 }
 
 function renderHTMLCard() {
