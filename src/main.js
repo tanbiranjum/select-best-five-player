@@ -44,14 +44,18 @@ totalCalcForm.addEventListener("submit", calculateTotalPrice);
 
 function calculateTotalPlayerCost(e) {
   e.preventDefault();
-  const playerPriceCost = document.getElementById("player-price").value;
-  if (playerPriceCost) {
-    const totalCost = selectedPlayerList.length * parseFloat(playerPriceCost);
-    totalPlayerCostHTML.innerText = totalCost;
-    totalPlayerCost = totalCost;
+  if (selectedPlayerList.length > 0) {
+    const playerPriceCost = document.getElementById("player-price").value * 1;
+    if (playerPriceCost) {
+      const totalCost = selectedPlayerList.length * playerPriceCost;
+      totalPlayerCostHTML.innerText = totalCost;
+      totalPlayerCost = totalCost;
+      return;
+    }
+    alert("Input can't be empty");
     return;
   }
-  alert("Please Enter");
+  alert("You didn't selected any player");
 }
 
 function calculateTotalPrice(e) {
