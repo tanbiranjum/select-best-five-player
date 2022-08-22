@@ -35,15 +35,31 @@ let totalCost = 0;
 const cards = document.getElementsByClassName("cards")[0];
 const playerList = document.getElementById("player-list");
 const totalCalcForm = document.getElementById("total-price-form");
+const playerCostForm = document.getElementById("player-price-form");
+const totalPlayerCostHTML = document.getElementById("player-expanses");
 const totalCostHTML = document.getElementById("total-cost");
 
+playerCostForm.addEventListener("submit", calculateTotalPlayerCost);
 totalCalcForm.addEventListener("submit", calculateTotalPrice);
+
+function calculateTotalPlayerCost(e) {
+  e.preventDefault();
+  const playerPriceCost = document.getElementById("player-price").value;
+  if (playerPriceCost) {
+    const totalCost = selectedPlayerList.length * parseFloat(playerPriceCost);
+    totalPlayerCostHTML.innerText = totalCost;
+    totalPlayerCost = totalCost;
+    return;
+  }
+  alert("Please Enter");
+}
 
 function calculateTotalPrice(e) {
   e.preventDefault();
   const coachCost = document.getElementById("coach-price").value;
   const managerCost = document.getElementById("manager-price").value;
-  const total = parseFloat(coachCost) + parseFloat(managerCost);
+  const total =
+    totalPlayerCost + parseFloat(coachCost) + parseFloat(managerCost);
   totalCostHTML.innerText = total;
 }
 
