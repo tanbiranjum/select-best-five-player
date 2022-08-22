@@ -33,17 +33,29 @@ let coachCost = 0;
 let totalCost = 0;
 
 const cards = document.getElementsByClassName("cards")[0];
+const playerList = document.getElementById("player-list");
+
+console.log(playerList);
 
 function selectPlayer(event, index) {
   if (selectedPlayerList.length < 5) {
     players[index].selected = true;
     selectedPlayerList.push(players[index].name);
-    console.log(selectedPlayerList);
+    renderPlayerListHTML();
     renderHTMLCard();
     return;
   }
   alert("Oops! You can't select more than five players");
 }
+
+function renderPlayerListHTML() {
+  playerList.innerHTML = "";
+  for (let i = 0; i < selectedPlayerList.length; i++) {
+    playerList.innerHTML += `<li>${i + 1}. ${selectedPlayerList[i]}</li>`;
+  }
+}
+
+renderPlayerListHTML();
 
 function renderHTMLCard() {
   cards.innerHTML = "";
