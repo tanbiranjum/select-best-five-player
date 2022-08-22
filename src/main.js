@@ -34,8 +34,18 @@ let totalCost = 0;
 
 const cards = document.getElementsByClassName("cards")[0];
 const playerList = document.getElementById("player-list");
+const totalCalcForm = document.getElementById("total-price-form");
+const totalCostHTML = document.getElementById("total-cost");
 
-console.log(playerList);
+totalCalcForm.addEventListener("submit", calculateTotalPrice);
+
+function calculateTotalPrice(e) {
+  e.preventDefault();
+  const coachCost = document.getElementById("coach-price").value;
+  const managerCost = document.getElementById("manager-price").value;
+  const total = parseFloat(coachCost) + parseFloat(managerCost);
+  totalCostHTML.innerText = total;
+}
 
 function selectPlayer(event, index) {
   if (selectedPlayerList.length < 5) {
@@ -55,14 +65,12 @@ function renderPlayerListHTML() {
   }
 }
 
-renderPlayerListHTML();
-
 function renderHTMLCard() {
   cards.innerHTML = "";
   for (let i = 0; i < players.length; i++) {
     cards.innerHTML += `
-          <div>
-          <p>Name: ${players[i].name}</p>
+        <div>
+        <p>Name: ${players[i].name}</p>
           <button ${
             players[i].selected ? "disabled" : ""
           } onClick="selectPlayer(event, ${i})">Select</button>
@@ -72,3 +80,4 @@ function renderHTMLCard() {
 }
 
 renderHTMLCard();
+renderPlayerListHTML();
