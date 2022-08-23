@@ -38,12 +38,12 @@ let players = [
 ]
 
 const selectedPlayerList = []
-
 let totalPlayerCost = 0
 let managerCost = 0
 let coachCost = 0
 let totalCost = 0
 
+// HTML NODE
 const cards = document.getElementsByClassName('cards')[0]
 const playerList = document.getElementById('player-list')
 const totalCalcForm = document.getElementById('total-price-form')
@@ -51,6 +51,7 @@ const playerCostForm = document.getElementById('player-price-form')
 const totalPlayerCostHTML = document.getElementById('player-expanses')
 const totalCostHTML = document.getElementById('total-cost')
 
+// EVENT REGISTERING
 playerCostForm.addEventListener('submit', calculateTotalPlayerCost)
 totalCalcForm.addEventListener('submit', calculateTotalPrice)
 
@@ -58,7 +59,7 @@ function calculateTotalPlayerCost(e) {
   e.preventDefault()
   if (selectedPlayerList.length > 0) {
     const playerPriceCost = document.getElementById('player-price').value * 1
-    if (typeof playerPriceCost === 'number' && !isNaN(playerPriceCost)) {
+    if (isNumber(playerPriceCost)) {
       const totalCost = selectedPlayerList.length * playerPriceCost
       totalPlayerCostHTML.innerText = totalCost
       totalPlayerCost = totalCost
@@ -70,16 +71,14 @@ function calculateTotalPlayerCost(e) {
   alert("You didn't selected any player")
 }
 
+/**
+ * Calculate total expanses
+ */
 function calculateTotalPrice(e) {
   e.preventDefault()
   const coachCost = document.getElementById('coach-price').value * 1
   const managerCost = document.getElementById('manager-price').value * 1
-  if (
-    typeof coachCost === 'number' &&
-    !isNaN(coachCost) &&
-    typeof managerCost === 'number' &&
-    !isNaN(managerCost)
-  ) {
+  if (isNumber(coachCost) && isNumber(managerCost)) {
     const total =
       totalPlayerCost + parseFloat(coachCost) + parseFloat(managerCost)
     totalCostHTML.innerText = total
@@ -88,6 +87,10 @@ function calculateTotalPrice(e) {
   alert('Please Input Valid Number!')
 }
 
+/**
+ * Select Player & Push It to selectedPlayerList []
+ * Re-render player card and player list to update state
+ */
 function selectPlayer(index) {
   if (selectedPlayerList.length < 5) {
     players[index].selected = true
@@ -130,5 +133,18 @@ function renderHTMLCard() {
   }
 }
 
+// RENDER HTML
 renderHTMLCard()
 renderPlayerListHTML()
+
+// UTILITY FUNCTION
+
+/**
+ * CHECK IF IT NUMBER OR NOT NaN
+ */
+function isNumber(value) {
+  if (typeof value === 'number' && !isNaN(value)) {
+    return true
+  }
+  return false
+}
