@@ -58,13 +58,13 @@ function calculateTotalPlayerCost(e) {
   e.preventDefault()
   if (selectedPlayerList.length > 0) {
     const playerPriceCost = document.getElementById('player-price').value * 1
-    if (playerPriceCost) {
+    if (typeof playerPriceCost === 'number' && !isNaN(playerPriceCost)) {
       const totalCost = selectedPlayerList.length * playerPriceCost
       totalPlayerCostHTML.innerText = totalCost
       totalPlayerCost = totalCost
       return
     }
-    alert("Input can't be empty")
+    alert('Please Enter Number')
     return
   }
   alert("You didn't selected any player")
@@ -72,20 +72,26 @@ function calculateTotalPlayerCost(e) {
 
 function calculateTotalPrice(e) {
   e.preventDefault()
-  const coachCost = document.getElementById('coach-price').value
-  const managerCost = document.getElementById('manager-price').value
-  const total =
-    totalPlayerCost + parseFloat(coachCost) + parseFloat(managerCost)
-  totalCostHTML.innerText = total
+  const coachCost = document.getElementById('coach-price').value * 1
+  const managerCost = document.getElementById('manager-price').value * 1
+  if (
+    typeof coachCost === 'number' &&
+    !isNaN(coachCost) &&
+    typeof managerCost === 'number' &&
+    !isNaN(managerCost)
+  ) {
+    const total =
+      totalPlayerCost + parseFloat(coachCost) + parseFloat(managerCost)
+    totalCostHTML.innerText = total
+    return
+  }
+  alert('Please Input Valid Number!')
 }
 
-function selectPlayer(event, index) {
+function selectPlayer(index) {
   if (selectedPlayerList.length < 5) {
     players[index].selected = true
     selectedPlayerList.push(players[index].name)
-    console.log(event.target.classList)
-    event.target.classList.remove('bg-sky-600')
-    event.target.classList.add('bg-slate-300')
     renderPlayerListHTML()
     renderHTMLCard()
     return
@@ -117,7 +123,7 @@ function renderHTMLCard() {
       players[i].selected
         ? "class='w-4/5 bg-slate-300 py-1 mt-4'"
         : "class='w-4/5 bg-sky-600 py-1 mt-4'"
-    } onClick="selectPlayer(event, ${i})">SELECT</button>
+    } onClick="selectPlayer(${i})">SELECT</button>
 						</div>
 					</div>
           `

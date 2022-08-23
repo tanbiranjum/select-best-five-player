@@ -6,8 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<script src="https://cdn.tailwindcss.com"></script>
-	<link rel="stylesheet" href="./src/style.css">
-	<title>Select Five Player</title>
+	<title>Select The Five You Love</title>
 </head>
 
 <body class="bg-gray-900">
@@ -18,7 +17,7 @@
 		</div>
 		<div class="text-center w-2/4">
 			<div class="relative">
-				<h1 class="text-rose-500 text-5xl font-sans" style="font-family: fantasy;">Select Your Best Five</h1>
+				<h1 class="text-rose-500 text-5xl font-sans" style="font-family: fantasy;">Select The Five You Love</h1>
 				<img class="absolute right-0" src="./assets/Line Marker.png" alt="">
 			</div>
 			<p class="text-white pt-10">Football is a family of team sports that involve, to varying degrees, kicking a
@@ -46,7 +45,7 @@
 							<form class="my-4" id="player-price-form">
 								<div class="flex gap-4">
 									<label class="w-1/2 text-slate-300" for="player">Per Player</label>
-									<input class="w-1/2 border border-gray-300 outline-none py-1 px-1" type="number" name="player" id="player-price" title="player" required>
+									<input class="w-1/2 border border-gray-300 outline-none py-1 px-1" type="text" name="player" id="player-price" title="player" required>
 								</div>
 								<button class="w-full bg-blue-800 text-white py-2 mt-4" type="submit">Calculate</button>
 							</form>
@@ -54,11 +53,11 @@
 							<form class="mt-4" id="total-price-form">
 								<div class="flex gap-4">
 									<label class="w-1/2 text-slate-300" for="manager">Manager</label>
-									<input class="w-1/2 border border-gray-300 outline-none py-1 px-1" type="number" name="manager" id="manager-price" title="manager" required>
+									<input class="w-1/2 border border-gray-300 outline-none py-1 px-1" type="text" name="manager" id="manager-price" title="manager" required>
 								</div>
 								<div class="flex gap-4 mt-4">
 									<label class="w-1/2 text-slate-300" for="coach">Coach</label>
-									<input class="w-1/2 border border-gray-300 outline-none py-1 px-1" type="number" name="coach" id="coach-price" title="coach" required>
+									<input class="w-1/2 border border-gray-300 outline-none py-1 px-1" type="text" name="coach" id="coach-price" title="coach" required>
 								</div>
 								<button type="submit" class="w-full bg-blue-800 text-white py-2 mt-4" id="total-price-calculate">Calculate Total</button>
 							</form>
